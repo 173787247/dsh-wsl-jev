@@ -27,7 +27,9 @@
     "README.zh.md",
     "LICENSE",
     "CHANGELOG.md",
-    "examples"
+    "examples",
+    "CONTRIBUTING.md",
+    "SECURITY.md"
   ],
   "keywords": [
     "dsh-plugin",
