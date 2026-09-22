@@ -1,41 +1,41 @@
 # dsh-wsl-jev
 
-> **Install set:** optional companion to [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit). Not in `KIT_SET=daily`.
+> **语言：** **中文**（本页） · [English](./README.en.md)
 
-DeepSeek Harness WSL plugin: call **TypeSafe Jev** (System One) for structured decisions — `noul` / `choice` / `score`. No prose generation.
+> **套件位置：** [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit) 的**可选**插件，不在 `KIT_SET=daily` / `install.sh`。
 
-**Self-contained.** Does not depend on third-party Jev dsh/MCP plugins. Speaks OpenRouter or TypeSafe HTTP directly.
+DeepSeek Harness（WSL）插件：调用 **TypeSafe Jev**（System One）做结构化判断——`noul` / `choice` / `score`，**不生成长文**。
 
-[中文说明 → README.zh.md](./README.zh.md)
+**自包含。** 不依赖第三方 Jev dsh/MCP 插件；直接打 OpenRouter 或 TypeSafe HTTP。
 
-## Architecture
+## 链路
 
 ```mermaid
 flowchart LR
   agent["dsh agent"] --> tools["jev_ask / check / rank"]
   tools --> plugin["dsh-wsl-jev"]
-  plugin -->|"HTTPS_PROXY"| api["OpenRouter or TypeSafe /v1/systemone"]
+  plugin -->|"HTTPS_PROXY"| api["OpenRouter 或 TypeSafe /v1/systemone"]
 ```
 
-## Compatibility
+## 兼容性
 
-| Field | Value |
-|-------|-------|
-| **Plugin** | `dsh-wsl-jev` **0.1.0** |
-| **Minimum dsh** | ≥ **0.1.2** |
-| **Kit set** | optional (not in `install.sh`) |
-| **API** | `OPENROUTER_API_KEY` (preferred) or `TYPESAFE_API_KEY` |
+| 字段 | 值 |
+|------|-----|
+| **插件** | `dsh-wsl-jev` **0.1.0** |
+| **最低 dsh** | ≥ **0.1.2** |
+| **套件** | 可选（不在 `install.sh`） |
+| **API** | 优先 `OPENROUTER_API_KEY`，否则 `TYPESAFE_API_KEY` |
 
-## Tools
+## 工具
 
-| Tool | Role |
+| 工具 | 作用 |
 |------|------|
-| `jev_status` | Provider, endpoint, key present?, proxy |
-| `jev_ask` | Typed questions over a `state` |
-| `jev_check` | One `noul`: is claim supported by evidence? |
-| `jev_rank` | Pick best candidate for a query |
+| `jev_status` | provider / endpoint / 是否有 key / 代理 |
+| `jev_ask` | 对 `state` 提 typed 问题 |
+| `jev_check` | 单题 noul：证据是否支持 claim |
+| `jev_rank` | 从候选里选最贴合 query 的一项 |
 
-## Config / env
+## 配置 / 环境变量
 
 ```yaml
 - id: dsh-wsl-jev
@@ -48,28 +48,28 @@ flowchart LR
 ```
 
 ```sh
-# ~/.dsh/dsh-wsl-jev.env  (sourced by kit restart-dsh-web.sh)
+# ~/.dsh/dsh-wsl-jev.env  （kit 的 restart-dsh-web.sh 会 source）
 OPENROUTER_API_KEY=sk-or-...
-# or: TYPESAFE_API_KEY=...
+# 或: TYPESAFE_API_KEY=...
 # DSH_JEV_MODEL=jev-latest
 ```
 
-WSL has no reliable direct egress to these hosts — keep `HTTPS_PROXY` set (same as IM / fetch).
+WSL 通常需要 `HTTPS_PROXY`（与 IM / fetch 相同）。
 
-## Install
+## 安装
 
 ```sh
 dsh plugin --profile web add github:173787247/dsh-wsl-jev
 bash ~/path/to/dsh-wsl-kit/scripts/restart-dsh-web.sh
 ```
 
-New session: `jev_status`, then `jev_check` with a short English claim.
+新会话：先 `jev_status`，再 `jev_check`（claim 建议用短英文）。
 
-## Protocol
+## 协议
 
-See [docs/PROTOCOL.md](./docs/PROTOCOL.md).
+见 [docs/PROTOCOL.md](./docs/PROTOCOL.md)。
 
-## Smoke (CLI)
+## 冒烟（CLI）
 
 ```sh
 bash scripts/probe-jev.sh
