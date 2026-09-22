@@ -1,43 +1,79 @@
 # dsh-wsl-jev
 
-> **瀹夎闆嗭細** [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit) 鍙€変即渚ｏ紝涓嶅湪 `KIT_SET=daily` / `install.sh`銆?
+> **套件位置：** [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit) 的**可选**插件，不在 `KIT_SET=daily` / `install.sh`。
 
-DeepSeek Harness WSL 鎻掍欢锛氳皟鐢?**TypeSafe Jev**锛圫ystem One锛夊仛缁撴瀯鍖栧垽鏂紙`noul` / `choice` / `score`锛夛紝**涓嶇敓鎴愰暱鏂?*銆?
+DeepSeek Harness（WSL）插件：调用 **TypeSafe Jev**（System One）做结构化判断——`noul` / `choice` / `score`，**不生成长文**。
 
-**鑷缓銆侀浂绗笁鏂?Jev 鎻掍欢渚濊禆銆?* 鐩存帴鎵?OpenRouter 鎴?TypeSafe HTTP銆?
+**自包含。** 不依赖第三方 Jev dsh/MCP 插件；直接打 OpenRouter 或 TypeSafe HTTP。
 
-[English 鈫?README.md](./README.md)
+[English → README.md](./README.md)
 
-## 閾捐矾
+## 链路
 
 ```mermaid
 flowchart LR
   agent["dsh agent"] --> tools["jev_ask / check / rank"]
   tools --> plugin["dsh-wsl-jev"]
-  plugin -->|"HTTPS_PROXY"| api["OpenRouter 鎴?TypeSafe /v1/systemone"]
+  plugin -->|"HTTPS_PROXY"| api["OpenRouter 或 TypeSafe /v1/systemone"]
 ```
 
-## 宸ュ叿
+## 兼容性
 
-| 宸ュ叿 | 浣滅敤 |
+| 字段 | 值 |
+|------|-----|
+| **插件** | `dsh-wsl-jev` **0.1.0** |
+| **最低 dsh** | ≥ **0.1.2** |
+| **套件** | 可选（不在 `install.sh`） |
+| **API** | 优先 `OPENROUTER_API_KEY`，否则 `TYPESAFE_API_KEY` |
+
+## 工具
+
+| 工具 | 作用 |
 |------|------|
-| `jev_status` | 鐪?provider / endpoint / 鏄惁鏈?key / 浠ｇ悊 |
-| `jev_ask` | 瀵?`state` 鎻愯嫢骞?typed 闂 |
-| `jev_check` | 鍗曢 noul锛氳瘉鎹槸鍚︽敮鎸?claim |
-| `jev_rank` | 浠庡€欓€夐噷閫夋渶璐?query 鐨勪竴椤?|
+| `jev_status` | provider / endpoint / 是否有 key / 代理 |
+| `jev_ask` | 对 `state` 提 typed 问题 |
+| `jev_check` | 单题 noul：证据是否支持 claim |
+| `jev_rank` | 从候选里选最贴合 query 的一项 |
 
-## 鍑瘉
+## 配置 / 环境变量
 
-浼樺厛 `OPENROUTER_API_KEY`锛屽惁鍒?`TYPESAFE_API_KEY`銆傚彲鏀捐繘 `~/.dsh/dsh-wsl-jev.env`锛坘it 鐨?`restart-dsh-web.sh` 浼?source锛夈€俉SL 闇€ `HTTPS_PROXY`銆?
+```yaml
+- id: dsh-wsl-jev
+  name: dsh-wsl-jev
+  config:
+    enabled: true
+    provider: auto          # auto | openrouter | typesafe
+    model: jev-latest
+    timeoutMs: 15000
+```
 
-## 瀹夎
+```sh
+# ~/.dsh/dsh-wsl-jev.env  （kit 的 restart-dsh-web.sh 会 source）
+OPENROUTER_API_KEY=sk-or-...
+# 或: TYPESAFE_API_KEY=...
+# DSH_JEV_MODEL=jev-latest
+```
+
+WSL 通常需要 `HTTPS_PROXY`（与 IM / fetch 相同）。
+
+## 安装
 
 ```sh
 dsh plugin --profile web add github:173787247/dsh-wsl-jev
-bash 鈥?dsh-wsl-kit/scripts/restart-dsh-web.sh
+bash ~/path/to/dsh-wsl-kit/scripts/restart-dsh-web.sh
 ```
 
-鏂颁細璇濓細`jev_status` 鈫?`jev_check`銆?
+新会话：先 `jev_status`，再 `jev_check`（claim 建议用短英文）。
+
+## 协议
+
+见 [docs/PROTOCOL.md](./docs/PROTOCOL.md)。
+
+## 冒烟（CLI）
+
+```sh
+bash scripts/probe-jev.sh
+```
 
 ## License
 

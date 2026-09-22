@@ -2,11 +2,11 @@
 
 > **Install set:** optional companion to [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit). Not in `KIT_SET=daily`.
 
-DeepSeek Harness WSL plugin: call **TypeSafe Jev** (System One) for structured decisions 鈥?`noul` / `choice` / `score`. No prose generation.
+DeepSeek Harness WSL plugin: call **TypeSafe Jev** (System One) for structured decisions — `noul` / `choice` / `score`. No prose generation.
 
 **Self-contained.** Does not depend on third-party Jev dsh/MCP plugins. Speaks OpenRouter or TypeSafe HTTP directly.
 
-[涓枃璇存槑 鈫?README.zh.md](./README.zh.md)
+[中文说明 → README.zh.md](./README.zh.md)
 
 ## Architecture
 
@@ -22,7 +22,7 @@ flowchart LR
 | Field | Value |
 |-------|-------|
 | **Plugin** | `dsh-wsl-jev` **0.1.0** |
-| **Minimum dsh** | 鈮?**0.1.2** |
+| **Minimum dsh** | ≥ **0.1.2** |
 | **Kit set** | optional (not in `install.sh`) |
 | **API** | `OPENROUTER_API_KEY` (preferred) or `TYPESAFE_API_KEY` |
 
@@ -54,13 +54,13 @@ OPENROUTER_API_KEY=sk-or-...
 # DSH_JEV_MODEL=jev-latest
 ```
 
-WSL has no reliable direct egress to these hosts 鈥?keep `HTTPS_PROXY` set (same as IM / fetch).
+WSL has no reliable direct egress to these hosts — keep `HTTPS_PROXY` set (same as IM / fetch).
 
 ## Install
 
 ```sh
 dsh plugin --profile web add github:173787247/dsh-wsl-jev
-bash 鈥?dsh-wsl-kit/scripts/restart-dsh-web.sh
+bash ~/path/to/dsh-wsl-kit/scripts/restart-dsh-web.sh
 ```
 
 New session: `jev_status`, then `jev_check` with a short English claim.
