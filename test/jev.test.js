@@ -108,3 +108,10 @@ describe("createJevClient", () => {
     assert.equal(out.answers.refund.noul, 0.91);
   });
 });
+
+describe("truncateChars", () => {
+  it("truncates long strings", async () => {
+    const { truncateChars } = await import("../lib/redact.js");
+    assert.ok(truncateChars("abcdef", 4).startsWith("abcd"));
+  });
+});
