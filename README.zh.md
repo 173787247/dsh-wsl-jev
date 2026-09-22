@@ -1,43 +1,43 @@
 # dsh-wsl-jev
 
-> **安装集：** [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit) 可选伴侣，不在 `KIT_SET=daily` / `install.sh`�?
+> **瀹夎闆嗭細** [dsh-wsl-kit](https://github.com/173787247/dsh-wsl-kit) 鍙€変即渚ｏ紝涓嶅湪 `KIT_SET=daily` / `install.sh`銆?
 
-DeepSeek Harness WSL 插件：调�?**TypeSafe Jev**（System One）做结构化判断（`noul` / `choice` / `score`），**不生成长�?*�?
+DeepSeek Harness WSL 鎻掍欢锛氳皟鐢?**TypeSafe Jev**锛圫ystem One锛夊仛缁撴瀯鍖栧垽鏂紙`noul` / `choice` / `score`锛夛紝**涓嶇敓鎴愰暱鏂?*銆?
 
-**自建、零第三�?Jev 插件依赖�?* 直接�?OpenRouter �?TypeSafe HTTP�?
+**鑷缓銆侀浂绗笁鏂?Jev 鎻掍欢渚濊禆銆?* 鐩存帴鎵?OpenRouter 鎴?TypeSafe HTTP銆?
 
-[English �?README.md](./README.md)
+[English 鈫?README.md](./README.md)
 
-## 链路
+## 閾捐矾
 
 ```mermaid
 flowchart LR
   agent["dsh agent"] --> tools["jev_ask / check / rank"]
   tools --> plugin["dsh-wsl-jev"]
-  plugin -->|"HTTPS_PROXY"| api["OpenRouter �?TypeSafe /v1/systemone"]
+  plugin -->|"HTTPS_PROXY"| api["OpenRouter 鎴?TypeSafe /v1/systemone"]
 ```
 
-## 工具
+## 宸ュ叿
 
-| 工具 | 作用 |
+| 宸ュ叿 | 浣滅敤 |
 |------|------|
-| `jev_status` | �?provider / endpoint / 是否�?key / 代理 |
-| `jev_ask` | �?`state` 提若�?typed 问题 |
-| `jev_check` | 单题 noul：证据是否支�?claim |
-| `jev_rank` | 从候选里选最�?query 的一�?|
+| `jev_status` | 鐪?provider / endpoint / 鏄惁鏈?key / 浠ｇ悊 |
+| `jev_ask` | 瀵?`state` 鎻愯嫢骞?typed 闂 |
+| `jev_check` | 鍗曢 noul锛氳瘉鎹槸鍚︽敮鎸?claim |
+| `jev_rank` | 浠庡€欓€夐噷閫夋渶璐?query 鐨勪竴椤?|
 
-## 凭证
+## 鍑瘉
 
-优先 `OPENROUTER_API_KEY`，否�?`TYPESAFE_API_KEY`。可放进 `~/.dsh/dsh-wsl-jev.env`（kit �?`restart-dsh-web.sh` �?source）。WSL 需 `HTTPS_PROXY`�?
+浼樺厛 `OPENROUTER_API_KEY`锛屽惁鍒?`TYPESAFE_API_KEY`銆傚彲鏀捐繘 `~/.dsh/dsh-wsl-jev.env`锛坘it 鐨?`restart-dsh-web.sh` 浼?source锛夈€俉SL 闇€ `HTTPS_PROXY`銆?
 
-## 安装
+## 瀹夎
 
 ```sh
 dsh plugin --profile web add github:173787247/dsh-wsl-jev
-bash �?dsh-wsl-kit/scripts/restart-dsh-web.sh
+bash 鈥?dsh-wsl-kit/scripts/restart-dsh-web.sh
 ```
 
-新会话：`jev_status` �?`jev_check`�?
+鏂颁細璇濓細`jev_status` 鈫?`jev_check`銆?
 
 ## License
 
