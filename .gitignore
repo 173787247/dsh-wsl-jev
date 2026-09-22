@@ -1,0 +1,9 @@
+node_modules/
+package-lock.json
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+examples/*.env
+!examples/*.env.example

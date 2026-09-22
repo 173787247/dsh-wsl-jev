@@ -1,0 +1,10 @@
+- insert:
+    - id: dsh-wsl-jev
+      name: dsh-wsl-jev
+      config:
+        enabled: true
+        # provider: auto | openrouter | typesafe
+        provider: auto
+        model: jev-latest
+        timeoutMs: 15000
+        maxStateChars: 16000

@@ -1,0 +1,11 @@
+# Awesome dsh-plugin entry (submit after repo age ≥1 day — CI gate)
+#
+# File in awesome-dsh-plugin:
+#   data/plugins/173787247__dsh-wsl-jev.yml
+
+url: https://github.com/173787247/dsh-wsl-jev
+name: 173787247/dsh-wsl-jev
+category: wsl
+description:
+  en: 'WSL DeepSeek Harness tools for TypeSafe Jev (System One): jev_status / jev_ask / jev_check / jev_rank via OpenRouter or TypeSafe. Returns noul/choice/score with confidence — not prose. Needs OPENROUTER_API_KEY or TYPESAFE_API_KEY; outbound uses HTTPS_PROXY. Self-contained — no third-party Jev plugin dependency. Tool calls send state/questions to the provider.'
+  zh: 'WSL 下 DeepSeek Harness 的 TypeSafe Jev（System One）工具：jev_status / jev_ask / jev_check / jev_rank，经 OpenRouter 或 TypeSafe 返回 noul/choice/score 置信度，不生成长文。需 OPENROUTER_API_KEY 或 TYPESAFE_API_KEY；出站走 HTTPS_PROXY。自建实现，不依赖第三方 Jev 插件。调用工具会把 state/questions 发往服务商。'
