@@ -23,6 +23,7 @@ flowchart LR
 |-------|-------|
 | **Plugin** | `dsh-wsl-jev` **0.1.0** |
 | **Minimum dsh** | ≥ **0.1.2** |
+| **Latest verified** | See [dsh-wsl-kit Compatibility](https://github.com/173787247/dsh-wsl-kit#compatibility-2026-09) (currently **`0.1.7-alpha.2`**) — single source of truth for the suite |
 | **Kit set** | optional (not in `install.sh`) |
 | **API** | `OPENROUTER_API_KEY` (preferred) or `TYPESAFE_API_KEY` |
 

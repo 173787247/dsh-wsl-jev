@@ -23,6 +23,7 @@ flowchart LR
 |------|-----|
 | **插件** | `dsh-wsl-jev` **0.1.0** |
 | **最低 dsh** | ≥ **0.1.2** |
+| **最新验证** | 以 [dsh-wsl-kit 兼容性](https://github.com/173787247/dsh-wsl-kit#compatibility-2026-09) 为准（当前 **`0.1.7-alpha.2`**）— 套件唯一真源 |
 | **套件** | 可选（不在 `install.sh`） |
 | **API** | 优先 `OPENROUTER_API_KEY`，否则 `TYPESAFE_API_KEY` |
 
