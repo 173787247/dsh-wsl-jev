@@ -1,6 +1,6 @@
 {
   "name": "dsh-wsl-jev",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "DeepSeek Harness WSL plugin: call TypeSafe Jev / OpenRouter System One for noul, choice, and score decisions (jev_ask / jev_check / jev_rank).",
   "license": "MIT",
   "repository": {

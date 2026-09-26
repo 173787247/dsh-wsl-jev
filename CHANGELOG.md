@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0
+
+- Outbound HTTP via `lib/proxy.js` `proxiedFetch` (same pattern as dsh-wsl-im).
+- `jev_status` friendlier when no API key (`ready`, `hint`, `proxyMode`).
+
 ## 0.1.0
 
 - Initial release: `jev_status`, `jev_ask`, `jev_check`, `jev_rank`.

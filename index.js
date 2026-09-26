@@ -182,15 +182,18 @@ export function apply(ctx, config = {}) {
 
 function formatStatus(v) {
   if (!v?.ok && v?.error) return `jev_status FAIL: ${v.error}`;
-  return [
-    "jev_status OK",
+  const lines = [
+    v.ready === false ? "jev_status OK (not ready — no API key)" : "jev_status OK",
     `provider=${v.provider}`,
     `endpoint=${v.endpoint}`,
     `model=${v.model}`,
     `hasKey=${v.hasKey}`,
     `proxy=${v.proxy}`,
+    `proxyMode=${v.proxyMode || "-"}`,
     `egress=${v.egress}`,
-  ].join("\n");
+  ];
+  if (v.hint) lines.push(`hint: ${v.hint}`);
+  return lines.join("\n");
 }
 
 function formatResult(v) {

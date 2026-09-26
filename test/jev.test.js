@@ -65,15 +65,18 @@ describe("question builders", () => {
 });
 
 describe("createJevClient", () => {
-  it("status reports missing key", () => {
+  it("status reports missing key with friendly hint", () => {
     const c = createJevClient({ env: {}, provider: "auto" });
     const s = c.status();
     assert.equal(s.hasKey, false);
     assert.equal(s.provider, "none");
+    assert.equal(s.ready, false);
+    assert.match(s.hint, /OPENROUTER_API_KEY|TYPESAFE_API_KEY/);
+    assert.equal(s.proxyMode, "direct");
   });
   it("errors without key on systemOne", async () => {
     const c = createJevClient({ env: {} });
-    await assert.rejects(() => c.systemOne({ state: "x", questions: { a: { type: "noul", instructions: "y" } } }), /API_KEY/);
+    await assert.rejects(() => c.systemOne({ state: "x", questions: { a: { type: "noul", instructions: "y" } } }), /API key|API_KEY/);
   });
   it("posts body via fetchImpl", async () => {
     let seen;
