@@ -21,7 +21,7 @@ flowchart LR
 
 | Field | Value |
 |-------|-------|
-| **Plugin** | `dsh-wsl-jev` **0.1.0** |
+| **Plugin** | `dsh-wsl-jev` **0.2.0** |
 | **Minimum dsh** | ≥ **0.1.2** |
 | **Latest verified** | See [dsh-wsl-kit Compatibility](https://github.com/173787247/dsh-wsl-kit#compatibility-2026-09) (currently **`0.2.0-rc.2`**) — single source of truth for the suite |
 | **Kit set** | optional (not in `install.sh`) |
