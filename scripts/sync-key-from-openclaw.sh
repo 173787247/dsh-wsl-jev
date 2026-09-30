@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-SRC=/mnt/c/Users/rchua/.openclaw/.env
+SRC="${OPENCLAW_ENV:-$HOME/.openclaw/.env}"
 DST="${HOME}/.dsh/dsh-wsl-jev.env"
 mkdir -p "${HOME}/.dsh"
 line=$(grep -E '^OPENROUTER_API_KEY=' "$SRC" | tr -d '\r' | head -1)
